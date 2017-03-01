@@ -21,3 +21,7 @@ Update the rwsheet.properties file with these two settings:
 Build and run the application.
 The rows marked "Complete" will have the "Remaining" value set to 0. (Note that you will have to refresh in the desktop application to see the changes)
 
+## See also
+- http://smartsheet-platform.github.io/api-docs/
+- https://www.smartsheet.com/
+
