@@ -16,7 +16,7 @@ public class rwsheet {
     // The API identifies columns by Id, but its more convenient to refer to column names
     private static HashMap<String, Long> columnMap = new HashMap<String, Long>();   // Map from friendly column name to column Id
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
         try {
             // Get API access token from properties file or environment
