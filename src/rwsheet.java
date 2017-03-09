@@ -1,3 +1,4 @@
+// Add Maven library "com.smartsheet:smartsheet-sdk-java:2.1.1" to access Smartsheet Java SDK
 import com.smartsheet.api.Smartsheet;
 import com.smartsheet.api.SmartsheetBuilder;
 import com.smartsheet.api.models.Cell;
@@ -13,7 +14,7 @@ import java.util.Properties;
 
 
 public class rwsheet {
-    // The API identifies columns by Id, but its more convenient to refer to column names
+    // The API identifies columns by Id, but it's more convenient to refer to column names
     private static HashMap<String, Long> columnMap = new HashMap<String, Long>();   // Map from friendly column name to column Id
 
     public static void main(final String[] args) {
