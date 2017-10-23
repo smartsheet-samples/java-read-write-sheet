@@ -14,3 +14,5 @@ target/*
 hs_err_pid*
 lib/
 target/
+.idea/libraries/*
+.idea/libraries/com_smartsheet_smartsheet_sdk_java_2_1_1.xml

@@ -1,4 +1,4 @@
-// Add Maven library "com.smartsheet:smartsheet-sdk-java:2.1.1" to access Smartsheet Java SDK
+// Add Maven library "com.smartsheet:smartsheet-sdk-java:2.2.2" to access Smartsheet Java SDK
 import com.smartsheet.api.Smartsheet;
 import com.smartsheet.api.SmartsheetBuilder;
 import com.smartsheet.api.models.Cell;
