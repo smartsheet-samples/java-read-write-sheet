@@ -7,10 +7,7 @@ import com.smartsheet.api.models.Row;
 import com.smartsheet.api.models.Sheet;
 
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 
 public class rwsheet {
@@ -81,15 +78,16 @@ public class rwsheet {
             if (! "0".equals(remainingCell.getDisplayValue()))                  // Skip if "Remaining" is already zero
             {
                 System.out.println("Need to update row #" + sourceRow.getRowNumber());
-                // We need to update this row, so create a rowBuilder and list of cells to update
-                Row.UpdateRowBuilder rowBuilder = new Row.UpdateRowBuilder().setRowId(sourceRow.getId());
 
-                // Build each new cell value
-                List<Cell> cellsToUpdate = new Cell.UpdateRowCellsBuilder()
-                        .addCell(columnMap.get("Remaining"), 0)               // Set value to 0
-                        .build();
+                Cell cellToUpdate = new Cell();
+                cellToUpdate.setColumnId(columnMap.get("Remaining"));
+                cellToUpdate.setValue(0);
 
-                rowToUpdate = rowBuilder.setCells(cellsToUpdate).build();
+                List<Cell> cellsToUpdate = Arrays.asList(cellToUpdate);
+
+                rowToUpdate = new Row();
+                rowToUpdate.setId(sourceRow.getId());
+                rowToUpdate.setCells(cellsToUpdate);
             }
         }
         return rowToUpdate;
