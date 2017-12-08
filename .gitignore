@@ -15,4 +15,7 @@ hs_err_pid*
 lib/
 target/
 .idea/libraries/
-
+.project
+.settings/
+bin/
+src/main/

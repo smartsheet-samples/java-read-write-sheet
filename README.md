@@ -15,13 +15,17 @@ This is implemented in the `evaluateRowAndBuildUpdates()` method which you shoul
 ## Setup
 * Import the sample data from "Sample Sheet.xlsx" into a new sheet
 * Update the rwsheet.properties file with these two settings:
-    * An API access token, obtained from the Smartsheet Account button, under Personal settings
+    * An API access token, obtained from the Smartsheet Account button, under Personal settings. 
+    
+        Alternatively, you can specify the access token with a system environment variable named `SMARTSHEET_ACCESS_TOKEN`.
     * The Sheet Id, obtained from sheet properties 
 
 * Build the application
-    * You may need to add a reference to the Maven library `com.smartsheet:smartsheet-sdk-java:2.1.1`
+    * `mvn compile`
+    * You may need to add a reference to the Maven library `com.smartsheet:smartsheet-sdk-java:2.2.3`
     
 * Run the application
+    * `mvn exec:java`
     * The rows marked "Complete" will have the "Remaining" value set to 0. (Note that you will have to refresh in the desktop application to see the changes)
 
 
