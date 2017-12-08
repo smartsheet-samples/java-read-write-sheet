@@ -1,4 +1,4 @@
-// Add Maven library "com.smartsheet:smartsheet-sdk-java:2.2.2" to access Smartsheet Java SDK
+// Add Maven library "com.smartsheet:smartsheet-sdk-java:2.2.3" to access Smartsheet Java SDK
 import com.smartsheet.api.Smartsheet;
 import com.smartsheet.api.SmartsheetBuilder;
 import com.smartsheet.api.models.Cell;
@@ -11,6 +11,12 @@ import java.util.*;
 
 
 public class rwsheet {
+    static {
+        // These lines enable logging to the console
+        System.setProperty("Smartsheet.trace.parts", "RequestBodySummary,ResponseBodySummary");
+        System.setProperty("Smartsheet.trace.pretty", "true");
+    }
+
     // The API identifies columns by Id, but it's more convenient to refer to column names
     private static HashMap<String, Long> columnMap = new HashMap<String, Long>();   // Map from friendly column name to column Id
 
@@ -51,10 +57,14 @@ public class rwsheet {
                     rowsToUpdate.add(rowToUpdate);
             }
 
-            // Finally, write all updated cells back to Smartsheet
-            System.out.println("Writing " + rowsToUpdate.size() + " rows back to sheet id " + sheet.getId());
-            ss.sheetResources().rowResources().updateRows(sheetId, rowsToUpdate);
-            System.out.println("Done");
+            if (rowsToUpdate.isEmpty()) {
+                System.out.println("No updates required");
+            } else {
+                // Finally, write all updated cells back to Smartsheet
+                System.out.println("Writing " + rowsToUpdate.size() + " rows back to sheet id " + sheet.getId());
+                ss.sheetResources().rowResources().updateRows(sheetId, rowsToUpdate);
+                System.out.println("Done");
+            }
         } catch (Exception ex) {
             System.out.println("Exception : " + ex.getMessage());
             ex.printStackTrace();
