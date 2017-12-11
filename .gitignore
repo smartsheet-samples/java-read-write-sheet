@@ -10,7 +10,7 @@ target/*
 hs_err_pid*
 lib/
 target/
-.idea/libraries/
+.idea/
 .project
 .settings/
 bin/
