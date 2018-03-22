@@ -8,7 +8,6 @@ import com.smartsheet.api.models.Column;
 import com.smartsheet.api.models.Row;
 import com.smartsheet.api.models.Sheet;
 
-import java.io.FileInputStream;
 import java.util.*;
 
 
@@ -27,7 +26,7 @@ public class RWSheet {
         try {
             // Get API access token from properties file or environment
             Properties prop = new Properties();
-            prop.load(new FileInputStream("RWSheet.properties"));
+            prop.load(RWSheet.class.getClassLoader().getResourceAsStream("rwsheet.properties"));
 
             String accessToken = prop.getProperty("accessToken");
             if (accessToken == null || accessToken.isEmpty())

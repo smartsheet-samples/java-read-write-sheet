@@ -14,7 +14,7 @@ This is implemented in the `evaluateRowAndBuildUpdates()` method which you shoul
 
 ## Setup
 * Import the sample data from "Sample Sheet.xlsx" into a new sheet
-* Update the rwsheet.properties file with these two settings:
+* Update the rwsheet.properties file (located in src/main/resources) with these two settings:
     * An API access token, obtained from the Smartsheet Account button, under Personal settings. 
     
         Alternatively, you can specify the access token with a system environment variable named `SMARTSHEET_ACCESS_TOKEN`.
@@ -28,6 +28,11 @@ This is implemented in the `evaluateRowAndBuildUpdates()` method which you shoul
     * `mvn exec:java`
     * The rows marked "Complete" will have the "Remaining" value set to 0. (Note that you will have to refresh in the desktop application to see the changes)
 
+
+## Logging
+This sample contains a runtime Maven dependency on the Log4j logging framework as an example on how to enable post 
+deployment logging for the Smartsheet Java SDK. A log4j.properties file located in /src/main/resources shows the 
+details for both a console and file appender. Logging to the console and a log file are enabled by default. 
 
 ## See also
 - http://smartsheet-platform.github.io/api-docs/
