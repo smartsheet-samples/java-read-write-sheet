@@ -11,6 +11,7 @@ hs_err_pid*
 lib/
 target/
 .idea/
+*.iml
 .project
 .settings/
 bin/
