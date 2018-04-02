@@ -2,7 +2,7 @@ package com.smartsheet.samples;
 
 // Add Maven library "com.smartsheet:smartsheet-sdk-java:2.2.3" to access Smartsheet Java SDK
 import com.smartsheet.api.Smartsheet;
-import com.smartsheet.api.SmartsheetBuilder;
+import com.smartsheet.api.SmartsheetFactory;
 import com.smartsheet.api.models.Cell;
 import com.smartsheet.api.models.Column;
 import com.smartsheet.api.models.Row;
@@ -39,7 +39,7 @@ public class RWSheet {
             Long sheetId = Long.parseLong(sheetIdString);
 
             // Initialize client
-            Smartsheet ss = new SmartsheetBuilder().setAccessToken(accessToken).build();
+            Smartsheet ss = SmartsheetFactory.createDefaultClient(accessToken);
 
             // Load the entire sheet
             Sheet sheet = ss.sheetResources().getSheet(sheetId, null, null, null, null, null, null, null);
