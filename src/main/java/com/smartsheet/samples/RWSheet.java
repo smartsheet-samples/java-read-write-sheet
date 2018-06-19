@@ -8,6 +8,7 @@ import com.smartsheet.api.models.Column;
 import com.smartsheet.api.models.Row;
 import com.smartsheet.api.models.Sheet;
 
+import java.io.File;
 import java.util.*;
 
 
@@ -34,15 +35,13 @@ public class RWSheet {
             if (accessToken == null || accessToken.isEmpty())
                 throw new Exception("Must set API access token in rwsheet.properties file");
 
-            // Get sheetId from properties file
-            String sheetIdString = prop.getProperty("sheetId");
-            Long sheetId = Long.parseLong(sheetIdString);
-
             // Initialize client
             Smartsheet ss = SmartsheetFactory.createDefaultClient(accessToken);
 
+            Sheet sheet = ss.sheetResources().importXlsx("Sample Sheet.xlsx", "sample", 0, 0);
+
             // Load the entire sheet
-            Sheet sheet = ss.sheetResources().getSheet(sheetId, null, null, null, null, null, null, null);
+            sheet = ss.sheetResources().getSheet(sheet.getId(), null, null, null, null, null, null, null);
             System.out.println("Loaded " + sheet.getRows().size() + " rows from sheet: " + sheet.getName());
 
             // Build the column map for later reference
@@ -63,7 +62,7 @@ public class RWSheet {
             } else {
                 // Finally, write all updated cells back to Smartsheet
                 System.out.println("Writing " + rowsToUpdate.size() + " rows back to sheet id " + sheet.getId());
-                ss.sheetResources().rowResources().updateRows(sheetId, rowsToUpdate);
+                ss.sheetResources().rowResources().updateRows(sheet.getId(), rowsToUpdate);
                 System.out.println("Done");
             }
         } catch (Exception ex) {
