@@ -36,12 +36,12 @@ public class RWSheet {
                 throw new Exception("Must set API access token in rwsheet.properties file");
 
             // Initialize client
-            Smartsheet ss = SmartsheetFactory.createDefaultClient(accessToken);
+            Smartsheet smartsheet = SmartsheetFactory.createDefaultClient(accessToken);
 
-            Sheet sheet = ss.sheetResources().importXlsx("Sample Sheet.xlsx", "sample", 0, 0);
+            Sheet sheet = smartsheet.sheetResources().importXlsx("Sample Sheet.xlsx", "sample", 0, 0);
 
             // Load the entire sheet
-            sheet = ss.sheetResources().getSheet(sheet.getId(), null, null, null, null, null, null, null);
+            sheet = smartsheet.sheetResources().getSheet(sheet.getId(), null, null, null, null, null, null, null);
             System.out.println("Loaded " + sheet.getRows().size() + " rows from sheet: " + sheet.getName());
 
             // Build the column map for later reference
@@ -62,7 +62,7 @@ public class RWSheet {
             } else {
                 // Finally, write all updated cells back to Smartsheet
                 System.out.println("Writing " + rowsToUpdate.size() + " rows back to sheet id " + sheet.getId());
-                ss.sheetResources().rowResources().updateRows(sheet.getId(), rowsToUpdate);
+                smartsheet.sheetResources().rowResources().updateRows(sheet.getId(), rowsToUpdate);
                 System.out.println("Done");
             }
         } catch (Exception ex) {
