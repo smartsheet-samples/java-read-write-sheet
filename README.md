@@ -14,10 +14,8 @@ This is implemented in the `evaluateRowAndBuildUpdates()` method which you shoul
 
 
 ## Setup
-* Update the rwsheet.properties file (located in src/main/resources) with an API access token, obtained from the Smartsheet Account button, under Personal settings. 
-    
-        Alternatively, you can specify the access token with a system environment variable named `SMARTSHEET_ACCESS_TOKEN`.
-
+* Set the system environment variable `SMARTSHEET_ACCESS_TOKEN` to the value of your access token, obtained from the Smartsheet Account button, under Personal settings
+   
 * Build the application
     * `mvn compile`
     * You may need to add a reference to the Maven library `com.smartsheet:smartsheet-sdk-java:2.2.5`

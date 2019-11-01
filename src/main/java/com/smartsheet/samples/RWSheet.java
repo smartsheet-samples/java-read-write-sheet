@@ -25,15 +25,10 @@ public class RWSheet {
     public static void main(final String[] args) {
 
         try {
-            // Get API access token from properties file or environment
-            Properties prop = new Properties();
-            prop.load(RWSheet.class.getClassLoader().getResourceAsStream("rwsheet.properties"));
-
-            String accessToken = prop.getProperty("accessToken");
+            // Get API access token from SMARTSHEET_ACCESS_TOKEN variable
+            String accessToken = System.getenv("SMARTSHEET_ACCESS_TOKEN");
             if (accessToken == null || accessToken.isEmpty())
-                accessToken = System.getenv("SMARTSHEET_ACCESS_TOKEN");
-            if (accessToken == null || accessToken.isEmpty())
-                throw new Exception("Must set API access token in rwsheet.properties file");
+                throw new Exception("Must set API access token in SMARTSHEET_ACCESS_TOKEN environment variable");
 
             // Initialize client
             Smartsheet smartsheet = SmartsheetFactory.createDefaultClient(accessToken);
