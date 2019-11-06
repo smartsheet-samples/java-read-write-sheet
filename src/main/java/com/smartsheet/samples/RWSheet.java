@@ -25,13 +25,8 @@ public class RWSheet {
     public static void main(final String[] args) {
 
         try {
-            // Get API access token from SMARTSHEET_ACCESS_TOKEN variable
-            String accessToken = System.getenv("SMARTSHEET_ACCESS_TOKEN");
-            if (accessToken == null || accessToken.isEmpty())
-                throw new Exception("Must set API access token in SMARTSHEET_ACCESS_TOKEN environment variable");
-
-            // Initialize client
-            Smartsheet smartsheet = SmartsheetFactory.createDefaultClient(accessToken);
+            // Initialize client. Gets API access token from SMARTSHEET_ACCESS_TOKEN variable
+            Smartsheet smartsheet = SmartsheetFactory.createDefaultClient();
 
             Sheet sheet = smartsheet.sheetResources().importXlsx("Sample Sheet.xlsx", "sample", 0, 0);
 
